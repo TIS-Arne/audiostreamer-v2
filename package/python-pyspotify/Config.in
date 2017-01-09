@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PYSPOTIFY
+	bool "python-pyspotify"
+	select BR2_PACKAGE_PYTHON_CFFI
+	help
+	  Python wrapper for libspotify
+
+	  http://pyspotify.mopidy.com/

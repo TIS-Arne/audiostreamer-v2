@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_BACKPORTSSSL_MATCH_HOSTNAME
+	bool "python-backportsssl_match_hostname"
+	help
+	  The ssl.match_hostname() function from Python 3.5
+
+	  http://bitbucket.org/brandon/backports.ssl_match_hostname

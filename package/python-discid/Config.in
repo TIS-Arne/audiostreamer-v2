@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_DISCID
+	bool "python-discid"
+	select BR2_PACKAGE_LIBDISCID
+	help
+	  Python binding of Libdiscid
+
+	  https://python-discid.readthedocs.org/

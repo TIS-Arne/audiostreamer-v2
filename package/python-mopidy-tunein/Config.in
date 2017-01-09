@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_TUNEIN
+	bool "python-mopidy-tunein"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS
+	select BR2_PACKAGE_PYTHON_MOPIDY
+	select BR2_PACKAGE_PYTHON_PYKKA
+	select BR2_PACKAGE_PYTHON_REQUESTS
+	help
+	  Mopidy extension for playing music from TuneIn.
+
+	  https://github.com/kingosticks/mopidy-tunein

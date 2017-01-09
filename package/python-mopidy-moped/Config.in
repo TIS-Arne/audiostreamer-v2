@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_MOPED
+	bool "python-mopidy-moped"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS
+	select BR2_PACKAGE_PYTHON_MOPIDY
+	help
+	  Responsive Web client for Mopidy
+
+	  https://github.com/martijnboland/moped

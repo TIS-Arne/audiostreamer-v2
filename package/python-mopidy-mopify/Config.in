@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_MOPIFY
+	bool "python-mopidy-mopify"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS
+	select BR2_PACKAGE_PYTHON_MOPIDY
+	select BR2_PACKAGE_PYTHON_CONFIGOBJ
+	help
+	  A Mopidy Web client based on the (old) Spotify interface. Improved
+	  to work with spotify as main library.
+
+	  https://github.com/dirkgroenen/Mopify

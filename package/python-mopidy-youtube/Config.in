@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_YOUTUBE
+	bool "python-mopidy-youtube"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS
+	select BR2_PACKAGE_PYTHON_REQUESTS
+	select BR2_PACKAGE_PYTHON_PAFY
+	select BR2_PACKAGE_PYTHON_MOPIDY
+	select BR2_PACKAGE_PYTHON_PYKKA
+	help
+	  Mopidy extension that plays sound from YouTube
+
+	  https://github.com/mopidy/mopidy-youtube

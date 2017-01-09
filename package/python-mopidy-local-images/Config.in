@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_LOCAL_IMAGES
+	bool "python-mopidy-local-images"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS
+	select BR2_PACKAGE_PYTHON_MOPIDY
+	select BR2_PACKAGE_PYTHON_PYKKA
+	select BR2_PACKAGE_PYTHON_URITOOLS
+	help
+	  Mopidy local library proxy extension for handling embedded album
+	  art
+
+	  https://github.com/mopidy/mopidy-local-images

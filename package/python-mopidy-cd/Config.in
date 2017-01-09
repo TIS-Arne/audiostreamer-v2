@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_CD
+	bool "python-mopidy-cd"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS
+	select BR2_PACKAGE_PYTHON_MOPIDY
+	select BR2_PACKAGE_PYTHON_PYKKA
+	select BR2_PACKAGE_PYTHON_DISCID
+	help
+	  Mopidy Extension to play audio CD
+
+	  https://github.com/asartori/mopidy-cd

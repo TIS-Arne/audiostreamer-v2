@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_WEBSETTINGS
+	bool "python-mopidy-websettings"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS
+	select BR2_PACKAGE_PYTHON_MOPIDY
+	select BR2_PACKAGE_PYTHON_PYKKA
+	select BR2_PACKAGE_PYTHON_CONFIGOBJ
+	select BR2_PACKAGE_PYTHON_JINJA2
+	help
+	  Mopidy extension for editing settings in a webinterface
+
+	  https://github.com/woutervanwijk/mopidy-websettings

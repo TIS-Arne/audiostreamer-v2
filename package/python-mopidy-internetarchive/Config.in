@@ -1,0 +1,12 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_INTERNETARCHIVE
+	bool "python-mopidy-internetarchive"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS
+	select BR2_PACKAGE_PYTHON_MOPIDY
+	select BR2_PACKAGE_PYTHON_PYKKA
+	select BR2_PACKAGE_PYTHON_REQUESTS
+	select BR2_PACKAGE_PYTHON_CACHETOOLS
+	select BR2_PACKAGE_PYTHON_URITOOLS
+	help
+	  Mopidy extension for playing music from the Internet Archive
+
+	  https://github.com/tkem/mopidy-internetarchive

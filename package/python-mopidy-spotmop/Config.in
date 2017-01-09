@@ -1,0 +1,13 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_SPOTMOP
+	bool "python-mopidy-spotmop"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS
+	select BR2_PACKAGE_PYTHON_PYLAST
+	select BR2_PACKAGE_PYTHON_SPOTIPY
+	select BR2_PACKAGE_PYTHON_MOPIDY
+	select BR2_PACKAGE_PYTHON_MOPIDY_LOCAL_IMAGES
+	select BR2_PACKAGE_PYTHON_CONFIGOBJ
+	help
+	  A Mopidy Web client that utilizes the Spotify and EchoNest
+	  frameworks
+
+	  https://github.com/jaedb/spotmop

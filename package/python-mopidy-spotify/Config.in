@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_SPOTIFY
+	bool "python-mopidy-spotify"
+	select BR2_PACKAGE_PYTHON_MOPIDY
+	select BR2_PACKAGE_PYTHON_PYKKA
+	select BR2_PACKAGE_PYTHON_PYSPOTIFY
+	select BR2_PACKAGE_PYTHON_REQUESTS
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS
+	help
+	  Mopidy extension for playing music from Spotify
+
+	  https://github.com/mopidy/mopidy-spotify

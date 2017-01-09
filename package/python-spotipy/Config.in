@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_SPOTIPY
+	bool "python-spotipy"
+	select BR2_PACKAGE_PYTHON_REQUESTS
+	help
+	  simple client for the Spotify Web API
+
+	  http://spotipy.readthedocs.org/

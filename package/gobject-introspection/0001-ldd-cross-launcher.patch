@@ -1,0 +1,22 @@
+*** a/giscanner/shlibs.py	2016-06-01 13:42:52.559661299 +1000
+--- b/giscanner/shlibs.py	2016-06-01 13:44:43.028025807 +1000
+***************
+*** 103,109 ****
+          if platform_system == 'Darwin':
+              args.extend(['otool', '-L', binary.args[0]])
+          else:
+!             args.extend(['ldd', binary.args[0]])
+          proc = subprocess.Popen(args, stdout=subprocess.PIPE)
+          patterns = {}
+          for library in libraries:
+--- 103,112 ----
+          if platform_system == 'Darwin':
+              args.extend(['otool', '-L', binary.args[0]])
+          else:
+!             ldd = os.getenv('GI_LDD')
+!             if not ldd:
+!                 ldd = 'ldd'
+!             args.extend([ldd, binary.args[0]])
+          proc = subprocess.Popen(args, stdout=subprocess.PIPE)
+          patterns = {}
+          for library in libraries:

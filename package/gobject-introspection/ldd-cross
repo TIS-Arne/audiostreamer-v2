@@ -1,0 +1,20 @@
+#! /bin/bash
+
+set -e
+
+QEMU=INSERT_QEMU_HERE
+RTLDLIST=INSERT_RTLDLIST_HERE
+
+for file do
+  case $file in
+  */*) :
+       ;;
+  *) file=./$file
+     ;;
+  esac
+  for RTLD in ${RTLDLIST}; do
+    if test -x $RTLD; then
+      "$QEMU" "$RTLD" --list "$file"
+    fi
+  done
+done

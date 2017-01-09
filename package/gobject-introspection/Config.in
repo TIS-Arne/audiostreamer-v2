@@ -1,0 +1,12 @@
+config BR2_PACKAGE_GOBJECT_INTROSPECTION
+    bool "gobject-introspection"
+    depends on BR2_TOOLCHAIN_GCC_AT_LEAST_4_3 # ldd
+    select BR2_PACKAGE_HOST_QEMU
+    select BR2_PACKAGE_PKGCONF
+    select BR2_PACKAGE_LIBGLIB2
+    select BR2_PACKAGE_PYTHON
+
+    help
+      gobject-introspection
+
+      http://wiki.gnome.org/

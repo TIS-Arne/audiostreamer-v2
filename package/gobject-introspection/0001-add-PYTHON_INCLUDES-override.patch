@@ -1,0 +1,17 @@
+diff --git a/m4/python.m4 b/m4/python.m4
+index ed5559d..b9e23fa 100644
+--- a/m4/python.m4
++++ b/m4/python.m4
+@@ -43,7 +43,11 @@ AC_DEFUN([AM_CHECK_PYTHON_HEADERS],
+ [AC_REQUIRE([AM_PATH_PYTHON])
+ AC_MSG_CHECKING(for headers required to compile python extensions)
+ dnl deduce PYTHON_INCLUDES
+-PYTHON_INCLUDES=`$PYTHON-config --includes`
++if test "${PYTHON_INCLUDES+set}" = set; then
++  AC_MSG_NOTICE([PYTHON_INCLUDES overridden to: $PYTHON_INCLUDES])
++else
++   PYTHON_INCLUDES=`$PYTHON-config --includes`
++fi
+ AC_SUBST(PYTHON_INCLUDES)
+ dnl check if the headers exist:
+ save_CPPFLAGS="$CPPFLAGS"

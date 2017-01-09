@@ -1,0 +1,14 @@
+diff --git a/giscanner/dumper.py b/giscanner/dumper.py
+index 3f721598..d27b30a2 100644
+--- a/giscanner/dumper.py
++++ b/giscanner/dumper.py
+@@ -177,6 +177,9 @@ class DumpCompiler(object):
+                 shutil.rmtree(tmpdir)
+             raise SystemExit('linking of temporary binary failed: ' + str(e))
+ 
++        # Fix the path to the binary to point to the real executable instead of the libtool wrapper script
++        bin_path = os.path.join(os.path.dirname(bin_path), ".libs", os.path.basename(bin_path))
++
+         return IntrospectionBinary([bin_path], tmpdir)
+ 
+     # Private API

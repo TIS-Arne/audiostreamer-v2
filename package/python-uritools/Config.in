@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_URITOOLS
+	bool "python-uritools"
+	select BR2_PACKAGE_PYTHON_IPADDRESS
+	help
+	  RFC 3986 compliant, Unicode-aware, scheme-agnostic replacement for
+	  urlparse
+
+	  https://github.com/tkem/uritools/

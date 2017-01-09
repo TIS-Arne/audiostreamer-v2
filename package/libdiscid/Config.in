@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBDISCID
+        bool "libdiscid"
+        help
+          libdiscid is a C library for creating MusicBrainz and freedb disc IDs from audio CDs.
+
+          https://musicbrainz.org/doc/libdiscid
+	  

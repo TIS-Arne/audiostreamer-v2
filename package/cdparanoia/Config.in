@@ -1,0 +1,6 @@
+config BR2_PACKAGE_CDPARANOIA
+        bool "cdparanoia"
+        help
+          Paranoia is a library that provides a unified, robust interface for Linux applications that want to use CDROM devices.
+
+          https://www.xiph.org/paranoia

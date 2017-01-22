@@ -9,7 +9,8 @@ GOBJECT_INTROSPECTION_SITE            = $(call github,GNOME,gobject-introspectio
 GOBJECT_INTROSPECTION_LICENSE         = GPLv2+ LGPLv2.1
 GOBJECT_INTROSPECTION_LICENSE_FILES   = COPYING COPYING.GPL COPYING.LGPL COPYING.lib COPYING.tools
 GOBJECT_INTROSPECTION_INSTALL_STAGING = YES
-GOBJECT_INTROSPECTION_MAKE_OPTS       = GI_CROSS_LAUNCHER="$(HOST_DIR)/usr/bin/qemu-$(HOST_QEMU_ARCH)" GI_LDD=$(STAGING_DIR)/usr/bin/ldd-cross INTROSPECTION_SCANNER=g-ir-scanner INTROSPECTION_COMPILER=g-ir-compiler GI_SCANNER_DEBUG=save-temps SCANNER_LIBS=-L$(@D)/.libs
+GOBJECT_INTROSPECTION_MAKE_OPTS       = GI_CROSS_LAUNCHER="$(HOST_DIR)/usr/bin/qemu-$(HOST_QEMU_ARCH)" GI_LDD=$(STAGING_DIR)/usr/bin/ldd-cross INTROSPECTION_SCANNER=g-ir-scanner INTROSPECTION_COMPILER=g-ir-compiler SCANNER_LIBS=-L$(@D)/.libs
+#GI_SCANNER_DEBUG=save-temps 
 GOBJECT_INTROSPECTION_DEPENDENCIES    = pkgconf python libglib2 host-qemu host-gobject-introspection
 HOST_GOBJECT_INTROSPECTION_DEPENDENCIES = host-pkgconf host-python host-libglib2 toolchain
 
@@ -53,17 +54,20 @@ endef
 define GOBJECT_INTROSPECTION_HACK_STAGING
 	echo "CREATING STAGING g-ir-scanner"
 	echo "#!/bin/sh" > $(STAGING_DIR)/usr/bin/g-ir-scanner
-	echo "env GI_SCANNER_DEBUG=keep-temps SCANNER_LIBS=$(SCANNER_LIBS) GI_CROSS_LAUNCHER=\"$(HOST_DIR)/usr/bin/qemu-$(HOST_QEMU_ARCH)\" GI_LDD=ldd-cross $(HOST_DIR)/usr/bin/g-ir-scanner --no-libtool \""'$$'@"\"" >> $(STAGING_DIR)/usr/bin/g-ir-scanner
+	echo "env SCANNER_LIBS=$(SCANNER_LIBS) GI_CROSS_LAUNCHER=\"$(HOST_DIR)/usr/bin/qemu-$(HOST_QEMU_ARCH)\" GI_LDD=ldd-cross $(HOST_DIR)/usr/bin/g-ir-scanner \""'$$'@"\"" >> $(STAGING_DIR)/usr/bin/g-ir-scanner
+	chmod guo+x $(STAGING_DIR)/usr/bin/g-ir-scanner
 
 	echo "CREATING STAGING g-ir-compiler"
 	echo "#!/bin/sh" > $(STAGING_DIR)/usr/bin/g-ir-compiler
-	echo "echo HURRA-BLAFASEL" >> $(STAGING_DIR)/usr/bin/g-ir-compiler
-	echo "env GI_CROSS_LAUNCHER=\"$(HOST_DIR)/usr/bin/qemu-$(HOST_QEMU_ARCH)\" GI_LDD=ldd-cross $(HOST_DIR)/usr/bin/g-ir-compiler \""'$$'"@\"" >> $(STAGING_DIR)/usr/bin/g-ir-compiler
+	echo "$(HOST_DIR)/usr/bin/qemu-$(HOST_QEMU_ARCH) $(STAGING_DIR)/usr/bin/g-ir-compiler.real \""'$$'"@\"" >> $(STAGING_DIR)/usr/bin/g-ir-compiler
+	chmod guo+x $(STAGING_DIR)/usr/bin/g-ir-compiler
 
 	echo "CREATING STAGING ldd-cross"
+	chmod guo+x $(GOBJECT_INTROSPECTION_PKGDIR)/create-ldd-cross.sh
 	$(GOBJECT_INTROSPECTION_PKGDIR)/create-ldd-cross.sh $(HOST_DIR)/usr/bin/qemu-$(HOST_QEMU_ARCH) $(STAGING_DIR)
 	echo "Created:"
 	cat $(STAGING_DIR)/usr/bin/ldd-cross
+	chmod guo+x $(STAGING_DIR)/usr/bin/ldd-cross
 endef
 
 define GOBJECT_INTROSPECTION_INSTALL_STAGING_CMDS
@@ -75,6 +79,11 @@ define GOBJECT_INTROSPECTION_INSTALL_STAGING_CMDS
 	cp -dp $(@D)/*.typelib $(STAGING_DIR)/usr/lib/girepository-1.0/
 	cp -dp $(@D)/gir/*.typelib $(STAGING_DIR)/usr/lib/girepository-1.0/
 	cp $(@D)/*.pc $(STAGING_DIR)/usr/lib/pkgconfig/
+	mkdir -p $(STAGING_DIR)/usr/include/gobject-introspection-1.0
+	cp -dp $(@D)/girepository/*.h $(STAGING_DIR)/usr/include/gobject-introspection-1.0/
+	mkdir -p $(STAGING_DIR)/usr/share/gobject-introspection-1.0
+	cp -dp $(@D)/Makefile.introspection $(STAGING_DIR)/usr/share/gobject-introspection-1.0/
+	cp -dp $(@D)/.libs/g-ir-compiler $(STAGING_DIR)/usr/bin/g-ir-compiler.real
 endef
 
 define GOBJECT_INTROSPECTION_INSTALL_TARGET_CMDS

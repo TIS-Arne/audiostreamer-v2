@@ -1,0 +1,23 @@
+diff --git a/giscanner/ccompiler.py b/giscanner/ccompiler.py
+index 57df9d6..ccda106 100644
+--- a/giscanner/ccompiler.py
++++ b/giscanner/ccompiler.py
+@@ -143,6 +143,8 @@ class CCompiler(object):
+                     args.append('-L' + library_path)
+                     if os.path.isabs(library_path):
+                         args.append('-Wl,-rpath,' + library_path)
++                    else:
++                        args.append('-Wl,-rpath,' + os.path.abspath(library_path))
+ 
+         else:
+             # libtool case: assemble linker command arguments, like we did before
+@@ -158,6 +160,9 @@ class CCompiler(object):
+                 if os.path.isabs(library_path):
+                     args.append('-rpath')
+                     args.append(library_path)
++                else:
++                    args.append('-rpath')
++                    args.append(os.path.abspath(library_path))
+ 
+     def get_external_link_flags(self, args, libtool, libraries):
+         # An "external" link is where the library to be introspected

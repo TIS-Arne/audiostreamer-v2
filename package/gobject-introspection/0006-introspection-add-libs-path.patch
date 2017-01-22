@@ -1,0 +1,12 @@
+diff --git a/Makefile.introspection b/Makefile.introspection
+index 57bec20..8ca71b7 100644
+--- a/Makefile.introspection
++++ b/Makefile.introspection
+@@ -143,6 +143,7 @@ $(1): $$($(_gir_name)_FILES)
+ 	  $(_gir_export_packages) \
+ 	  $(_gir_program) \
+ 	  $(_gir_libraries) \
++	  --library-path=.libs \
+ 	  $($(_gir_name)_SCANNERFLAGS) \
+ 	  --cflags-begin \
+ 	  $($(_gir_name)_CFLAGS) \

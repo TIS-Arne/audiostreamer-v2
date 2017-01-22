@@ -1,0 +1,12 @@
+diff --git a/gst/Makefile.am b/gst/Makefile.am
+index 4fe947a..27bd4e8 100644
+--- a/gst/Makefile.am
++++ b/gst/Makefile.am
+@@ -283,6 +283,7 @@ Gst-@GST_API_VERSION@.gir: $(INTROSPECTION_SCANNER) libgstreamer-@GST_API_VERSIO
+ 		--nsversion=@GST_API_VERSION@ \
+ 		--verbose \
+ 		--warn-all \
++		-L./.libs \
+ 		-I$(top_srcdir) \
+ 		-I$(top_builddir) \
+ 		-DIN_GOBJECT_INTROSPECTION=1 \

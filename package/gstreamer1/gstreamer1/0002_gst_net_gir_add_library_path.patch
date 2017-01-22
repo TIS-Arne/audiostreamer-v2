@@ -1,0 +1,12 @@
+diff --git a/libs/gst/net/Makefile.am b/libs/gst/net/Makefile.am
+index 5d1b6a8..5949c37 100644
+--- a/libs/gst/net/Makefile.am
++++ b/libs/gst/net/Makefile.am
+@@ -70,6 +70,7 @@ GstNet-@GST_API_VERSION@.gir: $(INTROSPECTION_SCANNER) libgstnet-@GST_API_VERSIO
+ 		$(gir_cincludes) \
+ 		--add-include-path=$(top_builddir)/gst \
+ 		--library-path=$(top_builddir)/gst \
++		--library-path=$(top_builddir)/libs/gst/base/.libs \
+ 		--library=libgstnet-@GST_API_VERSION@.la \
+ 		--include=Gst-@GST_API_VERSION@ \
+ 		--include=Gio-2.0 \

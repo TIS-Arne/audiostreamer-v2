@@ -18,8 +18,10 @@ ifeq ($(BR2_arc)$(BR2_xtensa)$(BR2_microblaze)$(BR2_nios2),y)
 GSTREAMER1_CONF_ENV = as_cv_unaligned_access=no
 endif
 ifeq ($(BR2_aarch64),y)
-GSTREAMER1_CONF_ENV = as_cv_unaligned_access=yes
+GSTREAMER1_CONF_ENV = as_cv_unaligned_access=yes LDFLAGS=-L$(@D)/gst/
 endif
+
+GSTREAMER1_MAKE_ENV = BUILD_DIR=$(@D)
 
 GSTREAMER1_CONF_OPTS = \
 	--disable-examples \

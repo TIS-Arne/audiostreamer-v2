@@ -1,0 +1,40 @@
+diff --git a/acinclude.m4 b/acinclude.m4
+index c0d1a5e..92c1bab 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -43,20 +43,10 @@ AC_DEFUN([AM_CHECK_PYTHON_HEADERS],
+ [AC_REQUIRE([AM_PATH_PYTHON])
+ AC_MSG_CHECKING(for headers required to compile python extensions)
+ dnl deduce PYTHON_INCLUDES
+-py_prefix=`$PYTHON -c "import sys; print(sys.prefix)"`
+-py_exec_prefix=`$PYTHON -c "import sys; print(sys.exec_prefix)"`
+-if $PYTHON-config --help 1>/dev/null 2>/dev/null; then
+-  PYTHON_INCLUDES=`$PYTHON-config --includes 2>/dev/null`
+-  if $PYTHON-config --abiflags 1>/dev/null 2>/dev/null; then
+-    PYTHON_ABI_FLAGS=`$PYTHON-config --abiflags 2>/dev/null`
+-  else
+-    PYTHON_ABI_FLAGS=
+-  fi
++if test "${PYTHON_INCLUDES+set}" = set; then
++  AC_MSG_NOTICE([PYTHON_INCLUDES overridden to: $PYTHON_INCLUDES])
+ else
+-  PYTHON_INCLUDES="-I${py_prefix}/include/python${PYTHON_VERSION}"
+-  if test "$py_prefix" != "$py_exec_prefix"; then
+-    PYTHON_INCLUDES="$PYTHON_INCLUDES -I${py_exec_prefix}/include/python${PYTHON_VERSION}"
+-  fi
++   PYTHON_INCLUDES=`$PYTHON-config --includes`
+ fi
+ AC_SUBST(PYTHON_INCLUDES)
+ dnl check if the headers exist:
+@@ -78,7 +68,10 @@ AC_DEFUN([AM_CHECK_PYTHON_LIBS],
+ AC_MSG_CHECKING(for libraries required to embed python)
+ 
+ dnl deduce PYTHON_LIBS
+-if $PYTHON-config --help 1>/dev/null 2>/dev/null; then
++if test "${PYTHON_LIBS+set}" = set; then
++  AC_MSG_NOTICE([PYTHON_LIBS overridden to: $PYTHON_LIBS])
++  AC_MSG_NOTICE([PYTHON_LIB_LOC overridden to: $PYTHON_LIB_LOC])
++elif $PYTHON-config --help 1>/dev/null 2>/dev/null; then
+   PYTHON_LIBS=`$PYTHON-config --ldflags 2>/dev/null`
+   PYTHON_LIB=`$PYTHON -c "import distutils.sysconfig as s; print(s.get_python_lib(standard_lib=1))"`
+   if echo "$host_os" | grep darwin >/dev/null 2>&1; then

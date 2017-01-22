@@ -1,0 +1,9 @@
+config BR2_PACKAGE_GST1_PYTHON
+       bool "gst1-python"
+       depends on BR2_PACKAGE_GSTREAMER1
+       select BR2_PACKAGE_PYTHON_GOBJECT
+       help
+          GStreamer Python binding overrides (complementing the
+          bindings provided by python-gi)
+
+	  https://github.com/GStreamer/gst-python

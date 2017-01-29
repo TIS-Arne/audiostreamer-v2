@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LIBSPOTIFY_ARMHF
+       bool "libspotify-armhf"
+       help
+	Download and install the binary libspotify-armhf library.

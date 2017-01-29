@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_MATERIAL_WEBCLIENT
+	bool "python-mopidy-material-webclient"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS # runtime
+	select BR2_PACKAGE_PYTHON_MOPIDY # runtime
+	select BR2_PACKAGE_PYTHON_WIFI # runtime
+	help
+	  A Mopidy web client with an Android Material feel.
+
+	  https://github.com/matgallacher/mopidy-material-webclient

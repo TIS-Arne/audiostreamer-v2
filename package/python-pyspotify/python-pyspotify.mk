@@ -10,6 +10,6 @@ PYTHON_PYSPOTIFY_SITE = https://pypi.python.org/packages/5b/ce/7a6520ea348023762
 PYTHON_PYSPOTIFY_SETUP_TYPE = setuptools
 PYTHON_PYSPOTIFY_LICENSE = Apache-2.0
 PYTHON_PYSPOTIFY_LICENSE_FILES = LICENSE
-PYTHON_PYSPOTIFY_DEPENDENCIES = host-python-cffi
+PYTHON_PYSPOTIFY_DEPENDENCIES = host-python-cffi libspotify-armhf
 
 $(eval $(python-package))

@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_WIFI
+	bool "python-wifi"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS # runtime
+	select BR2_PACKAGE_PYTHON_PBKDF2 # runtime
+	help
+	  Command line tool and library wrappers around iwlist and
+	  /etc/network/interfaces.
+
+	  UNKNOWN

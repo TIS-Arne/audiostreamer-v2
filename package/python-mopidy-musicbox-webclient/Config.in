@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_MUSICBOX_WEBCLIENT
+	bool "python-mopidy-musicbox-webclient"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS # runtime
+	select BR2_PACKAGE_PYTHON_MOPIDY # runtime
+	help
+	  Mopidy MusicBox web extension.
+
+	  https://github.com/woutervanwijk/mopidy-musicbox-webclient

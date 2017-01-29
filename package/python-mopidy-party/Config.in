@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_MOPIDY_PARTY
+	bool "python-mopidy-party"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS # runtime
+	select BR2_PACKAGE_PYTHON_MOPIDY # runtime
+	select BR2_PACKAGE_PYTHON_PYKKA # runtime
+	help
+	  Mopidy web extension designed for party.
+
+	  https://github.com/Lesterpig/mopidy-party

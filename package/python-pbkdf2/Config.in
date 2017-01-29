@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PBKDF2
+	bool "python-pbkdf2"
+	help
+	  PKCS#5 v2.0 PBKDF2 Module.
+
+	  http://www.dlitz.net/software/python-pbkdf2/
